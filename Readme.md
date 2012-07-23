@@ -2,6 +2,10 @@
 
   Flexible ascii progress bar
 
+## Installation
+
+    npm install progress
+
 ## Usage
 
    First we create a `ProgressBar`, giving it a format string
@@ -13,7 +17,7 @@ var ProgressBar = require('progress');
 
 var bar = new ProgressBar(':bar', { total: 10 });
 var timer = setInterval(function(){
-  bar.tick();
+bar.tick();
   if (bar.complete) {
     console.log('\ncomplete\n');
     clearInterval(timer);
