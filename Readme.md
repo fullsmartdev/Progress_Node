@@ -10,14 +10,14 @@
 
    First we create a `ProgressBar`, giving it a format string
    as well as the `total`, telling the progress bar when it will
-   be considered complete. After that all we need to do is `tick()` appropriately. 
+   be considered complete. After that all we need to do is `tick()` appropriately.
 
 ```javascript
 var ProgressBar = require('progress');
 
 var bar = new ProgressBar(':bar', { total: 10 });
 var timer = setInterval(function(){
-bar.tick();
+  bar.tick();
   if (bar.complete) {
     console.log('\ncomplete\n');
     clearInterval(timer);
@@ -28,6 +28,7 @@ bar.tick();
 ## Options:
 
   - `total` total number of ticks to complete
+  - `width` the displayed width of the progress bar defaulting to total
   - `stream` the output stream defaulting to stdout
   - `complete` completion character defaulting to "="
   - `incomplete` incomplete character defaulting to "-"
@@ -45,7 +46,7 @@ bar.tick();
 
 ### Download
 
-  In our download example each tick has a variable influence, so we pass the chunk length which adjusts the progress bar appropriately relative to the total length. 
+  In our download example each tick has a variable influence, so we pass the chunk length which adjusts the progress bar appropriately relative to the total length.
 
 ```javascript
 var ProgressBar = require('../')
@@ -87,7 +88,7 @@ downloading [=====             ] 29% 3.7s
 ```
 
 
-## License 
+## License
 
 (The MIT License)
 
