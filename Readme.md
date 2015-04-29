@@ -35,7 +35,6 @@ These are keys in the options object you can pass to the progress bar along with
 - `stream` the output stream defaulting to stderr
 - `complete` completion character defaulting to "="
 - `incomplete` incomplete character defaulting to "-"
-- `renderDelay` minimum time between updates in milliseconds defaulting to 50
 - `clear` option to clear the bar on completion defaulting to false
 - `callback` optional function to call when the progress bar completes
 
@@ -49,6 +48,28 @@ These are tokens you can use in the format of your progress bar.
 - `:elapsed` time elapsed in seconds
 - `:percent` completion percentage
 - `:eta` estimated completion time in seconds
+
+### Custom Tokens
+
+You can define custom tokens by adding a `{'name': value}` object paramater to your method (`tick()`, `update()`, etc.) calls.
+
+```javascript
+var bar = new ProgressBar(':current: :token1 :token2', { total: 3 })
+bar.tick({
+  'token1': "Hello",
+  'token2': "World!\n"
+})
+bar.tick(2, {
+  'token1': "Goodbye",
+  'token2': "World!"
+})
+```
+The above example would result in the output below.
+
+```
+1: Hello World!
+3: Goodbye World!
+```
 
 ## Examples
 
