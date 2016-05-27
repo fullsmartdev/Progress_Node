@@ -49,7 +49,6 @@ These are tokens you can use in the format of your progress bar.
 - `:elapsed` time elapsed in seconds
 - `:percent` completion percentage
 - `:eta` estimated completion time in seconds
-- `:rate` rate of ticks per second
 
 ### Custom Tokens
 
@@ -82,7 +81,7 @@ length which adjusts the progress bar appropriately relative to the total
 length.
 
 ```javascript
-var ProgressBar = require('../');
+var ProgressBar = require('progress');
 var https = require('https');
 
 var req = https.request({
@@ -95,7 +94,7 @@ req.on('response', function(res){
   var len = parseInt(res.headers['content-length'], 10);
 
   console.log();
-  var bar = new ProgressBar('  downloading [:bar] :rate/bps :percent :etas', {
+  var bar = new ProgressBar('  downloading [:bar] :percent :etas', {
     complete: '=',
     incomplete: ' ',
     width: 20,
@@ -117,7 +116,7 @@ req.end();
 The above example result in a progress bar like the one below.
 
 ```
-downloading [=====             ] 39/bps 29% 3.7s
+downloading [=====             ] 29% 3.7s
 ```
 
 You can see more examples in the `examples` folder.
