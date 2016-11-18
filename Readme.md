@@ -30,6 +30,7 @@ var timer = setInterval(function () {
 These are keys in the options object you can pass to the progress bar along with
 `total` as seen in the example above.
 
+- `curr` current completed index
 - `total` total number of ticks to complete
 - `width` the displayed width of the progress bar defaulting to total
 - `stream` the output stream defaulting to stderr
@@ -117,23 +118,6 @@ The above example result in a progress bar like the one below.
 
 ```
 downloading [=====             ] 29% 3.7s
-```
-
-### Interrupt
-
-To display a message during progress bar execution, use `interupt()`
-```javascript
-var ProgressBar = require('progress');
-
-var bar = new ProgressBar(':bar :current/:total', { total: 10 });
-var timer = setInterval(function () {
-  bar.tick();
-  if (bar.complete) {
-    clearInterval(timer);
-  } else if (bar.curr === 5) {
-      bar.interrupt('this message appears above the progress bar\ncurrent progress is ' + bar.curr + '/' + bar.total);
-  }
-}, 1000);
 ```
 
 You can see more examples in the `examples` folder.
