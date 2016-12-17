@@ -30,7 +30,6 @@ var timer = setInterval(function () {
 These are keys in the options object you can pass to the progress bar along with
 `total` as seen in the example above.
 
-- `curr` current completed index
 - `total` total number of ticks to complete
 - `width` the displayed width of the progress bar defaulting to total
 - `stream` the output stream defaulting to stderr
@@ -50,6 +49,7 @@ These are tokens you can use in the format of your progress bar.
 - `:elapsed` time elapsed in seconds
 - `:percent` completion percentage
 - `:eta` estimated completion time in seconds
+- `:rate` rate of ticks per second
 
 ### Custom Tokens
 
@@ -95,7 +95,7 @@ req.on('response', function(res){
   var len = parseInt(res.headers['content-length'], 10);
 
   console.log();
-  var bar = new ProgressBar('  downloading [:bar] :percent :etas', {
+  var bar = new ProgressBar('  downloading [:bar] :rate/bps :percent :etas', {
     complete: '=',
     incomplete: ' ',
     width: 20,
@@ -117,7 +117,7 @@ req.end();
 The above example result in a progress bar like the one below.
 
 ```
-downloading [=====             ] 29% 3.7s
+downloading [=====             ] 39/bps 29% 3.7s
 ```
 
 You can see more examples in the `examples` folder.
